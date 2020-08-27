@@ -8,11 +8,14 @@ export const AddTransaction = () => {
     const {addTransaction}=useContext(GlobalContext)
     const {transactions}=useContext(GlobalContext)
     let last=transactions.length
+    let id=0
+    if(last!==0)
+    id=transactions[last-1].id+1
     
     const onSubmit=(e)=>{
         e.preventDefault();
         const newTransaction={
-            id:transactions[last-1].id+1,
+            id,
             text,
             amount:+amount
         }
